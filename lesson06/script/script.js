@@ -1,37 +1,59 @@
 'use strict';
 
-let random = function() { 
-  return Math.floor(Math.random() * (100 - 1)) + 1
-}
 
 let isNumber = function(n){
-  return !isNaN(parseFloat(n)) && isFinite(n)
+  return !isNaN(parseFloat(n)) && isFinite(n) 
 };
 
-random();
-console.log(random());
+
+function startGame(){
+  let random = 0;
+  let randomGenerate = function() { 
+  return  random = Math.floor(Math.random() * (100 - 1)) + 1
+}
+randomGenerate();
+console.log(random,typeof random);
 
 
-let start = function() {
+ let start = function(){
   let question = prompt('загадайте число от 1 до 100');
   console.log(question,typeof question)
-  if(question !== null) {
+  if(question !== null ) {
     question *= 1;
     console.log(question,typeof question);
 
-    if(question !== isNumber(question)){
-      
+    if(isNumber(question) === true && question !== 0){
+      if(question !== random){
+        if(question < random) {
+          alert('введите число больше!');
+          start()
+        }
+        else if(question > random) {
+         alert('введите число меньше!');
+         start()
+        }
+        }else{
+          alert('вы победили');
+        }
+
+
     }else{
-      alert('это не число')
-      console.log(1+1);
+      alert('это не число');
+      start()
     }
 
   }else{
     alert('игра окончена')
   }
+  
+console.dir(start)
+  
 };
-
 start();
+}
+
+startGame();
+
 
 
 
